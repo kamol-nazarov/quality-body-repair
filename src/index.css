@@ -1,15 +1,189 @@
 @import "tailwindcss";
 
-/* Add this to src/index.css */
-@keyframes scroll {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+@theme {
+  --color-coal: #0a0a0b;
+  --color-panel: #121214;
+  --color-panel2: #17171a;
+  --color-ink: #f2efe7;
+  --color-smoke: #8e8e93;
+  --color-ember: #ff4d00;
+  --color-line: #232326;
+
+  --font-display: "Anton", "Arial Narrow", "Impact", sans-serif;
+  --font-body: "Space Grotesk", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", monospace;
+
+  --animate-marquee: marquee 32s linear infinite;
+  --animate-marquee-rev: marquee-rev 40s linear infinite;
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+  @keyframes marquee-rev {
+    from { transform: translateX(-50%); }
+    to { transform: translateX(0); }
+  }
 }
 
-.animate-scroll {
-  animation: scroll 30s linear infinite;
+/* ---------- base ---------- */
+
+html {
+  background: var(--color-coal);
 }
 
-.animate-scroll:hover {
-  animation-play-state: paused;
+body {
+  background: var(--color-coal);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
+}
+
+::selection {
+  background: var(--color-ember);
+  color: var(--color-coal);
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-coal);
+}
+::-webkit-scrollbar-thumb {
+  background: #2c2c31;
+  border-radius: 8px;
+  border: 2px solid var(--color-coal);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-ember);
+}
+
+/* Lenis smooth-scroll recommended styles */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+/* custom cursor takes over (fine pointers only) */
+.has-cursor,
+.has-cursor a,
+.has-cursor button,
+.has-cursor label {
+  cursor: none;
+}
+
+/* ---------- utilities ---------- */
+
+@utility text-outline {
+  -webkit-text-stroke: 1.5px color-mix(in srgb, var(--color-ink) 60%, transparent);
+  color: transparent;
+}
+
+@utility text-outline-ember {
+  -webkit-text-stroke: 1.5px var(--color-ember);
+  color: transparent;
+}
+
+@utility hazard {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    var(--color-ember) 0 12px,
+    transparent 12px 24px
+  );
+}
+
+@utility map-dark {
+  filter: grayscale(1) invert(0.92) contrast(0.88) brightness(0.92);
+}
+
+/* ---------- film grain overlay ---------- */
+
+.grain {
+  position: fixed;
+  inset: -100%;
+  z-index: 90;
+  pointer-events: none;
+  opacity: 0.055;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  animation: grain 9s steps(10) infinite;
+}
+
+@keyframes grain {
+  0%, 100% { transform: translate(0, 0); }
+  10% { transform: translate(-4%, -8%); }
+  20% { transform: translate(-12%, 4%); }
+  30% { transform: translate(6%, -14%); }
+  40% { transform: translate(-4%, 12%); }
+  50% { transform: translate(-12%, 6%); }
+  60% { transform: translate(10%, 0); }
+  70% { transform: translate(0, 10%); }
+  80% { transform: translate(-14%, 0); }
+  90% { transform: translate(8%, 4%); }
+}
+
+/* ---------- insurer marquee names ---------- */
+
+.ins-name {
+  -webkit-text-stroke: 1.5px color-mix(in srgb, var(--color-ink) 45%, transparent);
+  color: transparent;
+  transition: color 0.35s ease, -webkit-text-stroke-color 0.35s ease;
+}
+.ins-name:hover {
+  color: var(--color-ember);
+  -webkit-text-stroke-color: transparent;
+}
+
+/* outlined numbers that fill on row hover */
+.step-num {
+  -webkit-text-stroke: 1.5px var(--color-ember);
+  color: transparent;
+  transition: color 0.4s ease, -webkit-text-stroke-color 0.4s ease;
+}
+.group:hover .step-num {
+  color: var(--color-ember);
+  -webkit-text-stroke-color: transparent;
+}
+
+/* ---------- scroll cue ---------- */
+
+@keyframes scrollcue {
+  0% { transform: scaleY(0); transform-origin: top; }
+  45% { transform: scaleY(1); transform-origin: top; }
+  55% { transform: scaleY(1); transform-origin: bottom; }
+  100% { transform: scaleY(0); transform-origin: bottom; }
+}
+.animate-scrollcue {
+  animation: scrollcue 2.2s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+}
+
+/* ---------- status pulse ---------- */
+
+@keyframes pulse-dot {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(74, 222, 128, 0.5); }
+  70% { box-shadow: 0 0 0 8px rgba(74, 222, 128, 0); }
+}
+.animate-pulse-dot {
+  animation: pulse-dot 2s infinite;
+}
+
+/* ---------- reduced motion ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .grain,
+  .animate-marquee,
+  .animate-marquee-rev,
+  .animate-scrollcue,
+  .animate-pulse-dot {
+    animation: none !important;
+  }
 }

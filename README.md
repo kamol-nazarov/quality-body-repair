@@ -1,16 +1,36 @@
-# React + Vite
+# Quality Body Repair — Brooklyn
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Award-style marketing site for Quality Body Repair, a collision & paint shop in
+Bensonhurst, Brooklyn (221 Bay 37th St, NY 11214 · 718-266-3100).
 
-Currently, two official plugins are available:
+## Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- React 19 + Vite 7
+- Tailwind CSS v4 (design tokens in `src/index.css` via `@theme`)
+- GSAP + ScrollTrigger — scroll-driven reveals, parallax, section choreography
+- Lenis — smooth scrolling (exposed as `window.__lenis` for testing)
 
-## React Compiler
+## Structure
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+```
+src/
+  App.jsx            page composition, Lenis/GSAP wiring, global reveals
+  index.css          design system: colors, fonts, keyframes, utilities
+  lib/
+    data.js          business info (address, hours, services, insurers)
+    motion.jsx       shared primitives: Chars/Words splitters, Magnetic, flags
+    icons.jsx        inline SVG icons + logo mark
+  components/        Preloader, Cursor, Nav, Hero, Ticker, Services,
+                     Process, About, Insurers, CtaBanner, Contact, Footer
+```
 
-## Expanding the ESLint configuration
+All imagery is local (`src/assets/`). The callback form is front-end only
+(simulated submit) — wire it to EmailJS or a backend before going live.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Commands
+
+```bash
+npm run dev       # dev server
+npm run build     # production build → dist/
+npm run preview   # serve the build
+```
