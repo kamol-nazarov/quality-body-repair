@@ -100,8 +100,8 @@ export default function Nav({ ready }) {
         }`}
       >
         <div className="hazard h-2 w-full opacity-90" />
-        <nav className="flex flex-1 flex-col justify-center gap-1 px-6" aria-label="Mobile">
-          {LINKS.map((l, i) => (
+        <nav className="menu-stagger flex flex-1 flex-col justify-center gap-1 px-6" aria-label="Mobile">
+          {LINKS.map((l) => (
             <a
               key={l.href}
               href={l.href}
@@ -109,7 +109,6 @@ export default function Nav({ ready }) {
               className={`group flex items-baseline gap-4 border-b border-line py-4 transition-all duration-500 ${
                 open ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'
               }`}
-              style={{ transitionDelay: open ? `${120 + i * 70}ms` : '0ms' }}
             >
               <span className="font-mono text-xs text-ember">{l.n}</span>
               <span className="font-display text-5xl uppercase leading-none text-ink transition-colors group-hover:text-ember">

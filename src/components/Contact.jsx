@@ -183,12 +183,11 @@ export default function Contact() {
             src={BUSINESS.mapsEmbed}
             width="100%"
             height="440"
-            style={{ border: 0 }}
             allowFullScreen
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
             title="Quality Body Repair — 221 Bay 37th Street, Brooklyn"
-            className="map-dark h-[360px] w-full md:h-[440px]"
+            className="map-dark h-[360px] w-full border-0 md:h-[440px]"
           />
         </div>
       </div>

@@ -32,10 +32,7 @@ export default function Hero({ ready }) {
         />
         <div className="absolute inset-0 bg-gradient-to-t from-coal via-coal/45 to-coal/30" />
         <div className="absolute inset-0 bg-gradient-to-r from-coal/80 via-transparent to-transparent" />
-        <div
-          className="absolute -bottom-32 left-1/4 h-96 w-96 rounded-full opacity-25 blur-3xl"
-          style={{ background: 'radial-gradient(circle, #ff4d00 0%, transparent 70%)' }}
-        />
+        <div className="hero-glow absolute -bottom-32 left-1/4 h-96 w-96 rounded-full opacity-25 blur-3xl" />
       </div>
 
       {/* Meta strip */}
@@ -111,7 +108,7 @@ export default function Hero({ ready }) {
 
       {/* Scroll cue */}
       <div data-hero-fade className="absolute bottom-10 right-10 z-10 hidden flex-col items-center gap-3 lg:flex">
-        <span className="font-mono text-[10px] uppercase tracking-[0.35em] text-ink/50" style={{ writingMode: 'vertical-rl' }}>
+        <span className="vertical-rl font-mono text-[10px] uppercase tracking-[0.35em] text-ink/50">
           Scroll
         </span>
         <div className="h-16 w-px overflow-hidden">
