@@ -1,6 +1,7 @@
-# Build context contains this file's parent paths: deploy/default.conf and dist/.
-# The base image is the local qbr-static image. Do not pull a replacement.
-FROM sha256:ffda1115868e6a6d999e9504a5c034de6333d42634caf7f0b2fa88ce760d8cd3
+# Build context contains deploy/default.conf and dist/.
+# Tag the local image first, then build with --pull=false:
+#   docker tag ffda1115868e qbr-base:local
+FROM qbr-base:local
 USER root
 RUN rm -rf /usr/share/nginx/qbr && mkdir -p /usr/share/nginx/qbr
 COPY deploy/default.conf /etc/nginx/conf.d/default.conf
