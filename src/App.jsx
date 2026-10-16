@@ -16,20 +16,27 @@ import Insurers from './components/Insurers';
 import CtaBanner from './components/CtaBanner';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
-import { TICKER_ITEMS } from './lib/data';
+import ServicePage, { NotFoundPage } from './components/ServicePage';
+import { TICKER_ITEMS, SERVICES } from './lib/data';
+
+function requestPath() {
+  const path = window.location.pathname;
+  if (path === '/') return '/';
+  return path.replace(/\/+$/, '') || '/';
+}
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function App() {
-  const [revealed, setRevealed] = useState(false);
+  const path = requestPath();
+  const service = SERVICES.find((item) => `/${item.slug}` === path);
+  const home = path === '/';
+  const [revealed, setRevealed] = useState(() => !home || REDUCED);
   const lenisRef = useRef(null);
 
-  /* Lenis smooth scrolling driven by GSAP's ticker */
+  /* Lenis smooth scrolling driven by GSAP's ticker. Service pages stay native. */
   useEffect(() => {
-    if (REDUCED) {
-      setRevealed(true);
-      return;
-    }
+    if (!home || REDUCED) return;
     const lenis = new Lenis({ duration: 1.15, smoothWheel: true });
     lenisRef.current = lenis;
     window.__lenis = lenis;
@@ -46,7 +53,7 @@ export default function App() {
       lenisRef.current = null;
       delete window.__lenis;
     };
-  }, []);
+  }, [home]);
 
   /* Mobile menu locks scrolling */
   useEffect(() => {
@@ -80,7 +87,7 @@ export default function App() {
 
   /* Site-wide scroll-driven reveals */
   useEffect(() => {
-    if (!revealed || REDUCED) return;
+    if (!home || !revealed || REDUCED) return;
     const ctx = gsap.context(() => {
       gsap.utils.toArray('[data-split]').forEach((group) => {
         gsap.from(group.querySelectorAll('[data-word]'), {
@@ -119,9 +126,22 @@ export default function App() {
       });
     });
     return () => ctx.revert();
-  }, [revealed]);
+  }, [home, revealed]);
+
+  useEffect(() => {
+    if (!home || !revealed) return;
+    const hash = window.location.hash;
+    if (!hash || hash.length < 2) return;
+    const el = document.querySelector(hash);
+    if (!el) return;
+    if (lenisRef.current) lenisRef.current.scrollTo(el, { duration: 0 });
+    else el.scrollIntoView();
+  }, [home, revealed]);
 
   const handleReveal = useCallback(() => setRevealed(true), []);
+
+  if (service) return <ServicePage service={service} />;
+  if (!home) return <NotFoundPage />;
 
   return (
     <div className="relative min-h-screen bg-coal text-ink">

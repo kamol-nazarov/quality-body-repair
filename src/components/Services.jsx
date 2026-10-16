@@ -74,7 +74,7 @@ export default function Services() {
           {SERVICES.map((s) => (
             <a
               key={s.num}
-              href="#contact"
+              href={`/${s.slug}`}
               data-svc-row
               data-hover
               className="group grid grid-cols-12 items-center gap-x-4 gap-y-6 border-b border-line py-8 transition-colors duration-500 hover:bg-panel md:py-12"

@@ -20,22 +20,54 @@ export const BUSINESS = {
 export const SERVICES = [
   {
     num: '01',
+    slug: 'collision-repair',
     title: 'Collision Repair',
+    h1: 'Collision repair in Bensonhurst',
+    seoTitle: 'Collision Repair in Bensonhurst, Brooklyn | Quality Body Repair',
+    seoDescription:
+      'Laser frame measuring and factory-spec structural repair in Bensonhurst. Free written estimates, direct insurance billing. 221 Bay 37th Street, Brooklyn.',
     desc: 'Major structural repairs using laser-measuring systems to ensure your frame is straightened to the millimeter — restored to factory safety specification.',
+    body: [
+      'Walk in for a free written estimate. No appointment is necessary.',
+      'Laser measuring straightens the frame to factory safety specification before the panels are refinished.',
+      'The shop bills insurance directly, from GEICO to USAA, and handles the supplements.',
+      '221 Bay 37th Street, Bensonhurst, Brooklyn. Monday through Friday, 8:00 AM to 5:00 PM. English and Russian.',
+    ],
     tags: ['Frame straightening', 'Laser measuring', 'Structural'],
     image: 'why-choose-us.jpg',
   },
   {
     num: '02',
+    slug: 'paint-refinish',
     title: 'Paint & Refinish',
+    h1: 'Paint and refinish in Bensonhurst',
+    seoTitle: 'Paint and Refinish in Bensonhurst, Brooklyn | Quality Body Repair',
+    seoDescription:
+      'Computerized color matching and a dust-free downdraft booth in Bensonhurst. Free estimates, direct insurance billing. 221 Bay 37th Street, Brooklyn.',
     desc: 'Computerized color matching and a dust-free downdraft booth guarantee a showroom shine that lasts a lifetime.',
+    body: [
+      'Color is matched by computer and sprayed in a dust-free downdraft booth.',
+      'Walk in for a free written estimate. No appointment is necessary.',
+      'Insurance is billed directly, from GEICO to USAA.',
+      '221 Bay 37th Street, Bensonhurst, Brooklyn. Monday through Friday, 8:00 AM to 5:00 PM. English and Russian.',
+    ],
     tags: ['Color matching', 'Downdraft booth', 'Showroom finish'],
     image: 'paint-refinish.jpg',
   },
   {
     num: '03',
+    slug: 'dent-repair',
     title: 'Dent & Scratch',
+    h1: 'Dent and scratch repair in Bensonhurst',
+    seoTitle: 'Dent and Scratch Repair in Bensonhurst, Brooklyn | Quality Body Repair',
+    seoDescription:
+      'Paintless dent repair and blending for door dings and scratches in Bensonhurst. Free estimates. 221 Bay 37th Street, Brooklyn.',
     desc: 'From door dings to deep scratches, we use Paintless Dent Repair (PDR) and blending techniques to erase damage.',
+    body: [
+      'Paintless dent repair and blending take out door dings and scratches.',
+      'Walk in for a free written estimate. No appointment is necessary.',
+      '221 Bay 37th Street, Bensonhurst, Brooklyn. Monday through Friday, 8:00 AM to 5:00 PM. English and Russian.',
+    ],
     tags: ['Paintless dent repair', 'Blending', 'Detailing'],
     image: 'driveaway.jpg',
   },

@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { REDUCED, Magnetic } from '../lib/motion';
 import { BUSINESS } from '../lib/data';
+import { siteHref } from '../lib/siteHref';
 import { LogoMark, IconBurger, IconClose, IconPhone, IconPin } from '../lib/icons';
 
 const LINKS = [
@@ -41,7 +42,7 @@ export default function Nav({ ready }) {
         }`}
       >
         <div className="flex h-16 items-center justify-between px-5 md:h-20 md:px-10">
-          <a href="#top" className="group flex items-center gap-3" aria-label="Quality Body Repair — home">
+          <a href="/" className="group flex items-center gap-3" aria-label="Quality Body Repair — home">
             <LogoMark size={36} />
             <span className="flex flex-col font-mono text-[10px] uppercase leading-tight tracking-[0.25em] text-ink">
               <span>Quality Body</span>
@@ -53,7 +54,7 @@ export default function Nav({ ready }) {
             {LINKS.map((l) => (
               <a
                 key={l.href}
-                href={l.href}
+                href={siteHref(l.href)}
                 className={`group relative font-mono text-[11px] uppercase tracking-[0.2em] transition-colors hover:text-ink ${
                   scrolled ? 'text-smoke' : 'text-ink/75'
                 }`}
@@ -75,7 +76,7 @@ export default function Nav({ ready }) {
             </a>
             <Magnetic strength={0.3}>
               <a
-                href="#contact"
+                href={siteHref('#contact')}
                 className="hidden bg-ember px-5 py-2.5 font-mono text-[11px] font-medium uppercase tracking-[0.2em] text-coal transition-colors hover:bg-ink sm:block"
               >
                 Free estimate

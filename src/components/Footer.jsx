@@ -1,4 +1,5 @@
 import { BUSINESS } from '../lib/data';
+import { siteHref } from '../lib/siteHref';
 import { LogoMark, IconPhone, IconPin } from '../lib/icons';
 
 const NAV = [
@@ -7,6 +8,9 @@ const NAV = [
   { label: 'The Shop', href: '#about' },
   { label: 'Insurance', href: '#insurers' },
   { label: 'Contact', href: '#contact' },
+  { label: 'Collision Repair', href: '/collision-repair' },
+  { label: 'Paint & Refinish', href: '/paint-refinish' },
+  { label: 'Dent & Scratch', href: '/dent-repair' },
 ];
 
 export default function Footer() {
@@ -32,7 +36,7 @@ export default function Footer() {
           <ul className="mt-5 space-y-3">
             {NAV.map((l) => (
               <li key={l.href}>
-                <a href={l.href} className="text-sm text-ink/80 transition-colors hover:text-ember">
+                <a href={siteHref(l.href)} className="text-sm text-ink/80 transition-colors hover:text-ember">
                   {l.label}
                 </a>
               </li>

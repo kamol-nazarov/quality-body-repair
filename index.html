@@ -10,27 +10,57 @@
       content="Brooklyn's collision repair shop. Free estimates, all insurance accepted with direct billing, factory-spec structural repair and computerized color matching. 221 Bay 37th St, Bensonhurst. Мы говорим по-русски."
     />
     <meta name="theme-color" content="#0a0a0b" />
+    <link rel="canonical" href="https://qualitybodyrepair.com/" />
+    <meta name="robots" content="index, follow" />
     <meta property="og:title" content="Quality Body Repair — Collision Repair. Simplified." />
     <meta
       property="og:description"
       content="From the insurance claim to the final coat of paint — we handle everything. Bensonhurst, Brooklyn."
     />
     <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://qualitybodyrepair.com/" />
+    <meta property="og:image" content="https://qualitybodyrepair.com/og.jpg" />
+    <meta property="og:image:alt" content="Car at dusk on a Brooklyn street after a flawless repair" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content="https://qualitybodyrepair.com/og.jpg" />
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "AutoBodyShop",
-        "name": "Quality Body Repair",
-        "telephone": "+1-718-266-3100",
-        "address": {
-          "@type": "PostalAddress",
-          "streetAddress": "221 Bay 37th Street",
-          "addressLocality": "Brooklyn",
-          "addressRegion": "NY",
-          "postalCode": "11214",
-          "addressCountry": "US"
-        },
-        "openingHours": ["Mo-Fr 08:00-17:00"]
+        "@graph": [
+          {
+            "@type": "AutoBodyShop",
+            "@id": "https://qualitybodyrepair.com/#shop",
+            "name": "Quality Body Repair",
+            "url": "https://qualitybodyrepair.com/",
+            "image": "https://qualitybodyrepair.com/og.jpg",
+            "telephone": "+1-718-266-3100",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "221 Bay 37th Street",
+              "addressLocality": "Brooklyn",
+              "addressRegion": "NY",
+              "postalCode": "11214",
+              "addressCountry": "US"
+            },
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": 40.59414482956964,
+              "longitude": -73.99313305750185
+            },
+            "openingHours": ["Mo-Fr 08:00-17:00"],
+            "areaServed": [
+              { "@type": "Place", "name": "Bensonhurst" },
+              { "@type": "City", "name": "Brooklyn" }
+            ]
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://qualitybodyrepair.com/#website",
+            "url": "https://qualitybodyrepair.com/",
+            "name": "Quality Body Repair",
+            "publisher": { "@id": "https://qualitybodyrepair.com/#shop" }
+          }
+        ]
       }
     </script>
   </head>

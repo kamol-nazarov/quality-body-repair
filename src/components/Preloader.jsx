@@ -47,7 +47,7 @@ export default function Preloader({ onReveal }) {
   if (gone) return null;
 
   return (
-    <div ref={root} className="fixed inset-0 z-[200] flex flex-col justify-between bg-coal px-5 py-6 md:px-10 md:py-8">
+    <div ref={root} aria-hidden="true" className="fixed inset-0 z-[200] flex flex-col justify-between bg-coal px-5 py-6 md:px-10 md:py-8">
       <div className="flex items-center justify-between font-mono text-[11px] uppercase tracking-[0.3em] text-smoke" data-pl-out>
         <span>{BUSINESS.neighborhood} — Brooklyn</span>
         <span className="hidden sm:block">Collision · Paint · PDR</span>
@@ -55,7 +55,7 @@ export default function Preloader({ onReveal }) {
       </div>
 
       <div className="self-center text-center">
-        <h1 className="font-display uppercase leading-[0.9] text-ink text-[clamp(3rem,11vw,10rem)]">
+        <p className="font-display uppercase leading-[0.9] text-ink text-[clamp(3rem,11vw,10rem)]">
           <span className="block overflow-hidden" data-pl-line>
             <span className="block">Quality</span>
           </span>
@@ -65,7 +65,7 @@ export default function Preloader({ onReveal }) {
           <span className="block overflow-hidden" data-pl-line>
             <span className="block">Repair<span className="text-ember">.</span></span>
           </span>
-        </h1>
+        </p>
       </div>
 
       <div data-pl-out>
